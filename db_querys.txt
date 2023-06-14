@@ -1,0 +1,46 @@
+--- CREACION TABLAS
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    correo VARCHAR(50),
+    contraseña VARCHAR(50)
+);
+
+CREATE TABLE estado (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
+CREATE TABLE proyecto (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(50),
+    descripcion TEXT
+);
+
+CREATE TABLE tarea (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(50),
+    descripcion TEXT,
+    fecha_venc DATE,
+    estado_id INTEGER REFERENCES estado(id),
+    proyecto_id INTEGER REFERENCES proyecto(id)
+);
+
+CREATE TABLE usuario_tarea (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuario(id),
+    tarea_id INTEGER REFERENCES tarea(id)
+);
+
+--- INSERCION EN TABLA ESTADO
+INSERT INTO public.estado(
+	nombre)
+	VALUES ('pendiente');
+	
+INSERT INTO public.estado(
+	nombre)
+	VALUES ('en proceso');
+
+INSERT INTO public.estado(
+	nombre)
+	VALUES ('completada');
+
