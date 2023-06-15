@@ -10,7 +10,7 @@ class Usuario(db.Model):
     __tablename__ = 'usuario'
     id = db.Column(db.Integer,primary_key=True)
     correo = db.Column(db.String(50),nullable=False)
-    contraseña = db.Column(db.String(50),nullable=True)
+    contraseña = db.Column(db.String(72),nullable=True)
     
     def __init__(self,correo,contraseña):
         self.correo=correo

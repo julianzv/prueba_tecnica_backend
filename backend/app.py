@@ -3,12 +3,18 @@
 # instalaciones requeridas en entorno virtual:
 # pip install flask flask_sqlalchemy flask_cors
 # pip install psycopg2
+# pip install bcrypt
 
 # Imports
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import Usuario, Tarea, Estado, Proyecto, UsuarioTarea, db
+import bcrypt
+
+
+# estados para insertar en caso de no existir
+lista_estados = ["pendiente","en progreso","completada"]
 
 # App
 app = Flask(__name__)
@@ -19,6 +25,21 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhos
 
 # Init db
 db.init_app(app)
+
+# Agregar datos iniciales
+with app.app_context():
+    # Crear estados si no existen
+    for estado in lista_estados:
+        if not Estado.query.filter_by(nombre=estado).first():
+            db.session.add(Estado(estado))
+            db.session.commit()
+    # Crear primer usuario si no existe
+    if not Usuario.query.filter_by(correo="admin@admin.com").first():
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw("admin".encode('utf-8'), salt)
+        db.session.add(Usuario("admin@admin.com",hashed.decode('utf-8')))
+        db.session.commit()
+
 
 # Ruta de prueba, verificar que estén los estados:
 #  1: pendiente, 2: en progreso, 3: completada
@@ -44,7 +65,8 @@ def get_usuario_by_id(id):
 @app.route('/api/usuarios', methods=['POST'])
 def create_usuario():
     data = request.get_json()
-    usuario = Usuario(data['correo'],data['contraseña'])
+    hashed = bcrypt.hashpw(data['contraseña'].encode('utf-8'), bcrypt.gensalt())
+    usuario = Usuario(data['correo'],hashed.decode('utf-8'))
     db.session.add(usuario)
     db.session.commit()
     return jsonify({'message':'Usuario creado'})
@@ -100,6 +122,13 @@ def update_tarea(id):
     db.session.commit()
     return jsonify({'message':'Tarea actualizada'})
 
+@app.route('/api/tareas/<id>_ok',methods=['PUT'])
+def update_tarea_ok(id):
+    tarea = Tarea.query.get(id)
+    tarea.estado_id = 3
+    db.session.commit()
+    return jsonify({'message':'Tarea actualizada: completada'})
+
 # Modulo de proyectos
 @app.route('/api/proyectos',methods=['GET'])
 def get_proyectos():
@@ -116,7 +145,7 @@ def get_proyecto_by_id(id):
 @app.route('/api/proyectos', methods=['POST'])
 def create_proyecto():
     data = request.get_json()
-    proyecto = Proyecto(data['nombre'],data['descripcion'])
+    proyecto = Proyecto(data['titulo'],data['descripcion'])
     db.session.add(proyecto)
     db.session.commit()
     return jsonify({'message':'Proyecto creado'})
@@ -136,7 +165,7 @@ def delete_proyecto(id):
 def update_proyecto(id):
     data = request.get_json()
     proyecto = Proyecto.query.get(id)
-    proyecto.nombre = data['nombre']
+    proyecto.nombre = data['titulo']
     proyecto.descripcion = data['descripcion']
     db.session.commit()
     return jsonify({'message':'Proyecto actualizado'})
@@ -147,6 +176,13 @@ def get_usuarios_tareas():
     usuarios_tareas = UsuarioTarea.query.all()
     usuarios_tareas_json = [usuario_tarea.to_JSON() for usuario_tarea in usuarios_tareas]
     return jsonify(usuarios_tareas_json)
+
+@app.route('/api/usuarios_tareas/<usuario_id>',methods=['GET'])
+def get_usuarios_tareas_by_usuario_id(usuario_id):
+    usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
+    usuarios_tareas_json = [usuario_tarea.to_JSON() for usuario_tarea in usuarios_tareas]
+    return jsonify(usuarios_tareas_json)
+
 
 @app.route('/api/usuarios_tareas', methods=['POST'])
 def create_usuario_tarea():
