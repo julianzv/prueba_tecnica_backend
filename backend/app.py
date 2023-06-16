@@ -90,6 +90,9 @@ def create_usuario():
 
 @app.route('/api/usuarios/<id>',methods=['DELETE'])
 def delete_usuario(id):
+    usuario = Usuario.query.get(id)
+    if usuario.es_admin:
+        return jsonify({'message':'No se puede eliminar el usuario administrador'})
     usuario_tareas = UsuarioTarea.query.filter_by(usuario_id=id).all()
     for usuario_tarea in usuario_tareas:
         db.session.delete(usuario_tarea)
