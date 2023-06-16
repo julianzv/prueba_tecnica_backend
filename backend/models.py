@@ -11,10 +11,13 @@ class Usuario(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     correo = db.Column(db.String(50),nullable=False)
     contraseña = db.Column(db.String(72),nullable=True)
+    es_admin = db.Column(db.Boolean,default=False)
     
-    def __init__(self,correo,contraseña):
+    def __init__(self,correo,contraseña,es_admin=False):
         self.correo=correo
         self.contraseña=contraseña
+        self.es_admin=es_admin
+
    
     def __repr__(self):
         return '<Usuario %r>' %self.correo
@@ -23,7 +26,8 @@ class Usuario(db.Model):
         return{
             'id':self.id,
             'correo':self.correo,
-            'contraseña':self.contraseña
+            'contraseña':self.contraseña,
+            'es_admin':self.es_admin
         }
     
 class Tarea(db.Model):
@@ -109,4 +113,24 @@ class UsuarioTarea(db.Model):
             'id':self.id,
             'usuario_id':self.usuario_id,
             'tarea_id':self.tarea_id
+        }
+    
+class LogoutToken(db.Model):
+    __tablename__ = 'logout_token'
+    id = db.Column(db.Integer,primary_key=True)
+    token = db.Column(db.String(500),nullable=False)
+    date = db.Column(db.DateTime,nullable=False)
+
+    def __init__(self,token,date):
+        self.token = token
+        self.date = date
+    
+    def __repr__(self):
+        return '<LogoutToken %r>' %self.token
+    
+    def to_JSON(self):
+        return{
+            'id':self.id,
+            'token':self.token,
+            'date':self.date
         }

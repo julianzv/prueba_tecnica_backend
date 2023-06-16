@@ -2,7 +2,7 @@
 CREATE TABLE usuario (
     id SERIAL PRIMARY KEY,
     correo VARCHAR(50),
-    contraseña VARCHAR(50)
+    contraseña VARCHAR(72)
 );
 
 CREATE TABLE estado (
@@ -30,6 +30,13 @@ CREATE TABLE usuario_tarea (
     usuario_id INTEGER REFERENCES usuario(id),
     tarea_id INTEGER REFERENCES tarea(id)
 );
+
+CREATE TABLE logout_token (
+    id SERIAL PRIMARY KEY,
+    token VARCHAR(500) NOT NULL,
+    date DATE
+);
+
 
 --- INSERCION EN TABLA ESTADO
 INSERT INTO public.estado(

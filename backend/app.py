@@ -4,14 +4,18 @@
 # pip install flask flask_sqlalchemy flask_cors
 # pip install psycopg2
 # pip install bcrypt
+# pip install pyjwt
+# pip install python-dotenv
 
 # Imports
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import Usuario, Tarea, Estado, Proyecto, UsuarioTarea, db
+from models import Usuario, Tarea, Estado, Proyecto, UsuarioTarea, LogoutToken, db
 import bcrypt
-
+from functions import login_check, blacklist_token, admin_token, user_token
+from dotenv import load_dotenv
+load_dotenv('.env')
 
 # estados para insertar en caso de no existir
 lista_estados = ["pendiente","en progreso","completada"]
@@ -37,7 +41,7 @@ with app.app_context():
     if not Usuario.query.filter_by(correo="admin@admin.com").first():
         salt = bcrypt.gensalt()
         hashed = bcrypt.hashpw("admin".encode('utf-8'), salt)
-        db.session.add(Usuario("admin@admin.com",hashed.decode('utf-8')))
+        db.session.add(Usuario("admin@admin.com",hashed.decode('utf-8'),True))
         db.session.commit()
 
 
@@ -49,8 +53,43 @@ def get_estados():
     estados_json = [estado.to_JSON() for estado in estados]
     return jsonify(estados_json)
 
+# Modulo de autenticación
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    return login_check(data)
+
+@app.route('/api/logout', methods=['POST'])
+#@blacklist_token
+def logout():
+    return jsonify({'message':'Sesión cerrada'})
+
+@app.route('/api/check', methods=['GET'])
+#@admin_token
+def check():
+    return jsonify({'message':'Token válido'})
+
+@app.route('/api/cambiar_contraseña', methods=['POST'])
+#@user_token
+def cambiar_contraseña():
+    data = request.get_json()
+    if len(data['contraseña']) < 8:
+        return jsonify({'message':'La contraseña debe tener al menos 8 caracteres'})
+    usuario = Usuario.query.filter_by(correo=data['correo']).first()
+    if usuario:
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(data['contraseña'].encode('utf-8'), salt)
+        usuario.contraseña = hashed.decode('utf-8')
+        db.session.commit()
+        return jsonify({'message':'Contraseña cambiada'})
+    else:
+        return jsonify({'message':'Usuario no encontrado'})
+
+
+
 # Modulo de usuarios
 @app.route('/api/usuarios',methods=['GET'])
+#@admin_token
 def get_usuarios():
     usuarios = Usuario.query.all()
     usuarios_json = [usuario.to_JSON() for usuario in usuarios]
