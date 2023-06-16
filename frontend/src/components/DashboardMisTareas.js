@@ -7,6 +7,7 @@ const DashboardMisTareas = () => {
     const user_id = localStorage.getItem('user_id');
     const [tareas, setTareas] = useState([]);
     const [proyectos, setProyectos] = useState([]);
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         const fetchTareas = async () => {
@@ -39,6 +40,22 @@ const DashboardMisTareas = () => {
     }
 
         , []);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await api.getUsuario(user_id);
+            if (res.status === 200) {
+                const data = await res.json();
+                setEmail(data.correo);
+            }
+            else {
+                alert("Something went wrong");
+            }
+        }
+        fetchUser();
+    }
+
+        , [user_id]);
 
 
     const Logout = async (e) => {
@@ -78,6 +95,7 @@ const DashboardMisTareas = () => {
             <div className="row">
                 <div className="col-md-12">
                     <h1>Mis Tareas</h1>
+                    <h3>Hola, {email}</h3>
                     <h3>Estas son tus tareas pendientes.</h3>
                     <button className="add-button btn-primary" onClick={() => navigate('/')}>Volver a inicio</button>
                     <button className="delete-button btn-primary" onClick={Logout}>Cerrar sesión</button>

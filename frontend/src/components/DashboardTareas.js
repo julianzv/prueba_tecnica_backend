@@ -91,15 +91,19 @@ const DashboardTareas = () => {
 
     const GetProyectos = async () => {
         const res = await api.getProyectos();
+        console.log(res.status);
         if (res.status === 200) {
             const data = await res.json();
+            console.log(data);
             setProyectos(data);
-            setProyectoId(data[0].id);
-
+            if (data.length > 0){
+                setProyectoId(data[0].id);
+            }
         } else {
             alert('Something went wrong');
         }
     }
+
 
     useEffect(() => {
         GetProyectos();
@@ -196,6 +200,7 @@ const DashboardTareas = () => {
             {showCreateModal && (
                 <div className="modal">
                     <div className="modal-content">
+                        <h1>Crear tarea</h1>
                         <form onSubmit={CreateTarea}>
                             <div className="form-group">
                                 <label htmlFor="titulo">Título</label>

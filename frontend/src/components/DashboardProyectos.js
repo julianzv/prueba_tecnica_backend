@@ -247,7 +247,6 @@ const DashboardProyectos = () => {
             {showEditModal && (
                 <div className="modal">
                     <div className="modal-content">
-                        <span className="close" onClick={closeEditModal}>&times;</span>
                         <h1>Editar proyecto</h1>
                         <form onSubmit={updateProyecto}>
                             <div className="form-group">
@@ -259,6 +258,7 @@ const DashboardProyectos = () => {
                                     <textarea type="text" className="form-control" id="descripcion" placeholder="Descripción" defaultValue={proyecto.descripcion} onChange={(e) => setDescripcion(e.target.value)} />
                                 </div>
                                 <button type="submit" className="add-button btn-primary">Editar</button>
+                                <button className="delete-button" onClick={closeEditModal}>Cerrar</button>
                             </form>
                     </div>
                 </div>
