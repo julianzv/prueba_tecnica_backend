@@ -19,7 +19,7 @@ def login_check(data):
         token = jwt.encode({'id':usuario.id,'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=30)},os.environ['SECRET_KEY'])
         db.session.add(LogoutToken(token, datetime.datetime.utcnow()))
         db.session.commit()
-        return jsonify({'token':token})
+        return jsonify({'id': usuario.id, 'token':token})
     else:
         return jsonify({'message':'Contraseña incorrecta'}), 401
     
@@ -32,8 +32,8 @@ def blacklist_token(f):
         if not blocked_token:
             return jsonify({'message':'Token no encontrado'}), 404
         try:
-            blocked = LogoutToken(blocked_token,datetime.datetime.utcnow()).first()
-            db.session.add(blocked)
+            blocked = LogoutToken.query.filter_by(token=blocked_token).first()
+            db.session.delete(blocked)
             db.session.commit()
             return f(*args, **kwargs)
         except Exception as e:

@@ -60,7 +60,7 @@ def login():
     return login_check(data)
 
 @app.route('/api/logout', methods=['POST'])
-#@blacklist_token
+@blacklist_token
 def logout():
     return jsonify({'message':'Sesión cerrada'})
 
@@ -108,7 +108,7 @@ def create_usuario():
     usuario = Usuario(data['correo'],hashed.decode('utf-8'))
     db.session.add(usuario)
     db.session.commit()
-    return jsonify({'message':'Usuario creado'})
+    return jsonify({'message':'Usuario creado', 'usuario':usuario.to_JSON()})
 
 @app.route('/api/usuarios/<id>',methods=['DELETE'])
 def delete_usuario(id):
@@ -136,7 +136,7 @@ def create_tarea():
     tarea = Tarea(data['titulo'],data['descripcion'],data['fecha_venc'],data['estado_id'],data['proyecto_id'])
     db.session.add(tarea)
     db.session.commit()
-    return jsonify({'message':'Tarea creada'})
+    return jsonify({'message':'Tarea creada', 'tarea':tarea.to_JSON()})
 
 @app.route('/api/tareas/<id>',methods=['DELETE'])
 def delete_tarea(id):
@@ -187,7 +187,7 @@ def create_proyecto():
     proyecto = Proyecto(data['titulo'],data['descripcion'])
     db.session.add(proyecto)
     db.session.commit()
-    return jsonify({'message':'Proyecto creado'})
+    return jsonify({'message':'Proyecto creado', 'proyecto':proyecto.to_JSON()})
 
 @app.route('/api/proyectos/<id>',methods=['DELETE'])
 def delete_proyecto(id):
@@ -219,17 +219,21 @@ def get_usuarios_tareas():
 @app.route('/api/usuarios_tareas/<usuario_id>',methods=['GET'])
 def get_usuarios_tareas_by_usuario_id(usuario_id):
     usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
-    usuarios_tareas_json = [usuario_tarea.to_JSON() for usuario_tarea in usuarios_tareas]
-    return jsonify(usuarios_tareas_json)
-
+    tareas = []
+    for usuario_tarea in usuarios_tareas:
+        tarea = Tarea.query.get(usuario_tarea.tarea_id)
+        tareas.append(tarea.to_JSON())
+    return jsonify(tareas)
 
 @app.route('/api/usuarios_tareas', methods=['POST'])
 def create_usuario_tarea():
     data = request.get_json()
+    if UsuarioTarea.query.filter_by(usuario_id=data['usuario_id'],tarea_id=data['tarea_id']).first():
+        return jsonify({'message':'Usuario-tarea ya existe'}), 400
     usuario_tarea = UsuarioTarea(data['usuario_id'],data['tarea_id'])
     db.session.add(usuario_tarea)
     db.session.commit()
-    return jsonify({'message':'Usuario-tarea creado'})
+    return jsonify({'message':'Usuario-tarea creado', 'usuario_tarea':usuario_tarea.to_JSON()})
 
 @app.route('/api/usuarios_tareas/<id>',methods=['DELETE'])
 def delete_usuario_tarea(id):
