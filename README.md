@@ -20,6 +20,8 @@ Al ejecutar la aplicación (/backend/app.py), se insertan valores base, que son 
 - 2: en progreso
 - 3: completada
 
+Para conectar con la base de datos, se utiliza la librería SQLAlchemy. Se utiliza CORS para permitir la comunicación entre el backend y el frontend.
+
 La aplicación corre en la ruta http://localhost:8080/, por ejemplo para ver los usuarios la ruta será http://localhost:8080/api/usuarios (método GET).
 
 Se consideraron 5 módulos en el backend acorde a los requerimientos:
@@ -153,7 +155,9 @@ Se realizaron las siguientes vistas:
   - Ver mis tareas (muestra en pantalla una tabla con la lista de tareas que no se han terminado del usuario que ingresó.
   - Gestión de proyectos (permite agregar, editar, eliminar y ver los detalles y tareas de cada proyecto)  
 
-Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend.
+Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend. Mientras que los módulos se encuentran en /components.
+
+La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
 
 ### Capturas (frontend)
 
