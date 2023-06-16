@@ -1,13 +1,16 @@
 # Prueba técnica de Backend
-## Instalación y creación de entorno virtual:
-`$ pip install virtualenv`
+## Instalación, creación y ejecución de entorno virtual:
+- `$ pip install virtualenv`
+- `$python -m venv venv`
+- `$venv\Script\activate`
 ## Instalaciones requeridas en entorno virtual:
 - En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
-## Instalaciones requeridas para el Frontend (React)
+## Creación del proyecto en React e instalaciones necesarias
+- `$npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
 ## Base de datos
-Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'
+Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'. Las credenciales pueden encontrarse en 'db_credenciales.txt'.
 ## Funcionamiento backend
 Es posible probar los endpoints con plataformas API como Postman.
 ### Inicio aplicación
@@ -18,7 +21,7 @@ Al ejecutar la aplicación (/backend/app.py), se insertan valores base, que son 
 
 La aplicación corre en la ruta http://localhost:8080/, por ejemplo para ver los usuarios la ruta será http://localhost:8080/api/usuarios (método GET).
 
-Se consideraron 5 módulos acorde a los requerimientos:
+Se consideraron 5 módulos en el backend acorde a los requerimientos:
 - Login
 - Usuarios
 - Tareas
@@ -28,7 +31,7 @@ Se consideraron 5 módulos acorde a los requerimientos:
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
-- Cerrar sesión (ruta: /api/logout, método POST)
+- Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté corriendo en React, para poder obtener el token de la sesión
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
@@ -57,4 +60,9 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Ver las tareas asignadas/pendientes de un usuario específico (ruta: /api/usuarios_tareas/usuario_id_asignadas)
 - Crear una asignación de tarea a un usuario (ruta: /api/usuarios_tareas, método POST), body con formato {"usuario_id":1, "tarea_id": 1}
 - Eliminar asignación de tarea a un usuario (ruta: /api/usuarios_tareas/id, método DELETE)
+
+### Ejemplo (utilizando Postman)
+
+![1-login-admin](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307)
+![2-get-usuarios](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800)
 
