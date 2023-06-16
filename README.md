@@ -62,7 +62,15 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Eliminar asignación de tarea a un usuario (ruta: /api/usuarios_tareas/id, método DELETE)
 
 ### Ejemplo (utilizando Postman)
+- Login con usuario principal
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307" height="200">
 
-![1-login-admin](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307 | width=100)
-![2-get-usuarios](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800 | width=100)
+- Obtener usuarios
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800" height="200">
+
+- Ver usuario específico
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/92e4bded-c1ae-43d1-9640-2a8c38407488" height="200">
+
+- Crear nuevo usuario
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9feaf227-f257-4e1d-8083-5cb57ef04007" height="200">
 
