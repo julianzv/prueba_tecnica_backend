@@ -1,4 +1,4 @@
-# Prueba técnica de Backend
+# Prueba técnica: Sistema de Gestión de Tareas
 ## Instalación, creación y ejecución de entorno virtual:
 - `$ pip install virtualenv`
 - `$python -m venv venv`
