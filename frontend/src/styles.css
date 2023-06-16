@@ -73,6 +73,7 @@ h3{
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
   }
   
   .modal-content {
@@ -84,7 +85,6 @@ h3{
   }
   
   .form-modal {
-    width: 100%;
     padding: 20px;
     border-radius: 10px;
     align-items: center;
@@ -150,6 +150,16 @@ h3{
     margin: 10px;
   }
 
+  .edit-button {
+    background-color: goldenrod;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: medium;
+    cursor: pointer;
+    margin: 10px;
+  }
   .select-tarea{
     padding: 10px;
     font-size: medium;

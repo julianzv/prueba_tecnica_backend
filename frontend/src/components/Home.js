@@ -51,6 +51,14 @@ const Home = () => {
         navigate('/tareas');
     }
 
+    const openDashboardMisTareas = () => {
+        navigate('/mis-tareas');
+    }
+
+    const openDashboardProyectos = () => {
+        navigate('/proyectos');
+    }
+
 
 
 
@@ -68,6 +76,10 @@ const Home = () => {
                             <button type="submit" className="action-button btn-primary" onClick={openDashboardUsuariosTareas}>Gestión de usuarios y tareas</button>
                             <br/>
                             <button type="submit" className="action-button btn-primary" onClick={openDashboardTareas}>Gestión de tareas</button>
+                            <br/>
+                            <button type="submit" className="action-button btn-primary" onClick={openDashboardMisTareas}>Ver mis tareas</button>
+                            <br/>
+                            <button type="submit" className="action-button btn-primary" onClick={openDashboardProyectos}>Gestión de proyectos</button>
                             <br/>
                             <button type="submit" className="action-button btn-primary" onClick={Logout}>Cerrar sesión</button>
 

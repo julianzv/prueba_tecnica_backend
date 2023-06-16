@@ -13,7 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from models import Usuario, Tarea, Estado, Proyecto, UsuarioTarea, LogoutToken, db
 import bcrypt
-from functions import login_check, blacklist_token, admin_token, user_token
+from functions import login_check, blacklist_token
 from dotenv import load_dotenv
 load_dotenv('.env')
 
@@ -64,28 +64,6 @@ def login():
 def logout():
     return jsonify({'message':'Sesión cerrada'})
 
-@app.route('/api/check', methods=['GET'])
-#@admin_token
-def check():
-    return jsonify({'message':'Token válido'})
-
-@app.route('/api/cambiar_contraseña', methods=['POST'])
-#@user_token
-def cambiar_contraseña():
-    data = request.get_json()
-    if len(data['contraseña']) < 8:
-        return jsonify({'message':'La contraseña debe tener al menos 8 caracteres'})
-    usuario = Usuario.query.filter_by(correo=data['correo']).first()
-    if usuario:
-        salt = bcrypt.gensalt()
-        hashed = bcrypt.hashpw(data['contraseña'].encode('utf-8'), salt)
-        usuario.contraseña = hashed.decode('utf-8')
-        db.session.commit()
-        return jsonify({'message':'Contraseña cambiada'})
-    else:
-        return jsonify({'message':'Usuario no encontrado'})
-
-
 
 # Modulo de usuarios
 @app.route('/api/usuarios',methods=['GET'])
@@ -112,6 +90,9 @@ def create_usuario():
 
 @app.route('/api/usuarios/<id>',methods=['DELETE'])
 def delete_usuario(id):
+    usuario_tareas = UsuarioTarea.query.filter_by(usuario_id=id).all()
+    for usuario_tarea in usuario_tareas:
+        db.session.delete(usuario_tarea)
     usuario = Usuario.query.get(id)
     db.session.delete(usuario)
     db.session.commit()
@@ -191,9 +172,13 @@ def create_proyecto():
 
 @app.route('/api/proyectos/<id>',methods=['DELETE'])
 def delete_proyecto(id):
-    # Eliminar tareas asociadas al proyecto
+    # Eliminar tareas de usuarios asociadas al proyecto
     tareas = Tarea.query.filter_by(proyecto_id=id).all()
     for tarea in tareas:
+        usuarios_tareas = UsuarioTarea.query.filter_by(tarea_id=tarea.id).all()
+        for usuario_tarea in usuarios_tareas:
+            db.session.delete(usuario_tarea)
+        db.session.commit()
         db.session.delete(tarea)
     proyecto = Proyecto.query.get(id)
     db.session.delete(proyecto)
@@ -204,10 +189,16 @@ def delete_proyecto(id):
 def update_proyecto(id):
     data = request.get_json()
     proyecto = Proyecto.query.get(id)
-    proyecto.nombre = data['titulo']
+    proyecto.titulo = data['titulo']
     proyecto.descripcion = data['descripcion']
     db.session.commit()
     return jsonify({'message':'Proyecto actualizado'})
+
+@app.route('/api/proyectos/<id>_tareas',methods=['GET'])
+def get_proyecto_tareas(id):
+    tareas = Tarea.query.filter_by(proyecto_id=id).all()
+    tareas_json = [tarea.to_JSON() for tarea in tareas]
+    return jsonify(tareas_json)
 
 # Modulo de usuarios_tareas
 @app.route('/api/usuarios_tareas',methods=['GET'])
@@ -219,11 +210,23 @@ def get_usuarios_tareas():
 @app.route('/api/usuarios_tareas/<usuario_id>',methods=['GET'])
 def get_usuarios_tareas_by_usuario_id(usuario_id):
     usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
-    tareas = []
+    body = []
+    for usuario_tarea in usuarios_tareas:
+        id = usuario_tarea.id
+        tarea = Tarea.query.get(usuario_tarea.tarea_id)
+        body.append({'id':id,'tarea':tarea.to_JSON()})
+    return jsonify(body)
+
+@app.route('/api/usuarios_tareas/<usuario_id>_asignadas',methods=['GET'])
+def get_usuarios_tareas_asignadas(usuario_id):
+    usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
+    body = []
     for usuario_tarea in usuarios_tareas:
         tarea = Tarea.query.get(usuario_tarea.tarea_id)
-        tareas.append(tarea.to_JSON())
-    return jsonify(tareas)
+        if tarea.estado_id == 1 or tarea.estado_id == 2:
+            id = usuario_tarea.id
+            body.append({'id':id,'tarea':tarea.to_JSON()})
+    return jsonify(body)
 
 @app.route('/api/usuarios_tareas', methods=['POST'])
 def create_usuario_tarea():

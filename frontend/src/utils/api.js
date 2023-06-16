@@ -105,14 +105,14 @@ export function createTarea(titulo,descripcion,fecha_venc,estado_id,proyecto_id)
     })
 }
 
-export function updateTarea(id,titulo,descripcion,fecha,estado_id, proyecto_id){
+export function updateTarea(id,titulo,descripcion,fecha_venc,estado_id, proyecto_id){
     return fetch('http://localhost:8080/api/tareas/'+id, {
         method: 'PUT',
         headers: headers,
         body: JSON.stringify({
             titulo: titulo,
             descripcion: descripcion,
-            fecha: fecha,
+            fecha_venc: fecha_venc,
             estado_id: estado_id,
             proyecto_id: proyecto_id
         })
@@ -178,6 +178,12 @@ export function deleteProyecto(id){
     })
 }
 
+export function getProyectosTareas(id){
+    return fetch('http://localhost:8080/api/proyectos/'+id+'_tareas', {
+        method: 'GET',
+        headers: headers
+    })
+}
 // Modulo de tareas de usuario
 export function getTareasUsuariosAll(){
     return fetch('http://localhost:8080/api/usuarios_tareas', {
@@ -207,6 +213,13 @@ export function createTareaUsuario(usuario_id,tarea_id){
 export function deleteTareaUsuario(id){
     return fetch('http://localhost:8080/api/usuarios_tareas/'+id, {
         method: 'DELETE',
+        headers: headers
+    })
+}
+
+export function getTareasUsuarioAsignadas(usuario_id){
+    return fetch('http://localhost:8080/api/usuarios_tareas/'+usuario_id+'_asignadas', {
+        method: 'GET',
         headers: headers
     })
 }

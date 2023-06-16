@@ -13,6 +13,7 @@ const DashboardUsuariosTareas = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [tarea, setTarea] = useState('');
   const [tareas, setTareas] = useState([]);
+  const user_id = localStorage.getItem('user_id');
 
   const Logout = async (e) => {
     e.preventDefault();
@@ -97,6 +98,10 @@ const DashboardUsuariosTareas = () => {
   };
 
   const DeleteUsuario = async (id) => {
+    if (id === parseInt(user_id)) {
+      alert('No puedes eliminar tu propio usuario.');
+      return;
+    }
     const res = await api.deleteUsuario(id);
     if (res.status === 200) {
       const newUsuarios = usuarios.filter(usuario => usuario.id !== id);
@@ -134,7 +139,8 @@ const DashboardUsuariosTareas = () => {
       const newTareasUsuario = [...tareasUsuario, data];
       setTareasUsuario(newTareasUsuario);
       setTarea('');
-      await GetTareasUsuario(selectedUserId);
+
+      window.location.reload(false);
     }
     else if (res.status === 400) {
       alert('El usuario ya tiene la tarea asignada.');
@@ -163,7 +169,7 @@ const DashboardUsuariosTareas = () => {
       <div>
         <h1>Usuarios</h1>
         <button className='add-button' onClick={openCreateModal}>Crear Usuario</button>
-        <button className='add-button' onClick={() => navigate('/')}>Regresar a inicio</button>
+        <button className='add-button' onClick={() => navigate('/')}>Volver a inicio</button>
         <button className='delete-button' onClick={Logout}>Cerrar sesión</button>
         <table className='registers-table'>
           <thead className='registers-th'>
@@ -191,16 +197,20 @@ const DashboardUsuariosTareas = () => {
           <div className="modal-content">
             <h2>Crear Usuario</h2>
             <form className="form-modal">
+              <div className="form-group">
               <label htmlFor="correo">Correo:</label>
               <br />
-              <input type="text" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} />
+              <input type="text" className='form-control' id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} />
               <br />
+              </div>
+              <div className="form-group">
               <label htmlFor="contraseña">Contraseña:</label>
               <br />
-              <input type="password" id="contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
+              <input type="password" className='form-control' id="contraseña" value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
               <br />
-              <button type="submit" onClick={CreateUsuario}>Crear</button>
-              <button onClick={closeCreateModal}>Cancelar</button>
+              </div>
+              <button type="submit" className='add-button' onClick={CreateUsuario}>Crear</button>
+              <button className='delete-button' onClick={closeCreateModal}>Cancelar</button>
             </form>
           </div>
         </div>
@@ -234,11 +244,11 @@ const DashboardUsuariosTareas = () => {
               </thead>
               <tbody>
                 {tareasUsuario.map(tarea => (
-                  <tr key={tarea.id}>
-                    <td>{tarea.titulo}</td>
-                    <td>{tarea.descripcion}</td>
-                    <td>{formatDate(tarea.fecha_venc)}</td>
-                    <td>{getStatusLabel(tarea.estado_id)}</td>
+                  <tr key={tarea.tarea.id}>
+                    <td>{tarea.tarea.titulo}</td>
+                    <td>{tarea.tarea.descripcion}</td>
+                    <td>{formatDate(tarea.tarea.fecha_venc)}</td>
+                    <td>{getStatusLabel(tarea.tarea.estado_id)}</td>
                     <td>
                       <button className='delete-button' onClick={() => DeleteTareaUsuario(tarea.id)}>Eliminar</button>
                     </td>
