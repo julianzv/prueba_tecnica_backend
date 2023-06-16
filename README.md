@@ -65,83 +65,83 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 ### Ejemplo (utilizando Postman)
 - Login con usuario principal
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307" height="400">
 
 - Obtener usuarios
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800" height="400">
 
 - Ver usuario específico
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/92e4bded-c1ae-43d1-9640-2a8c38407488" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/92e4bded-c1ae-43d1-9640-2a8c38407488" height="400">
 
 - Crear nuevo usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9feaf227-f257-4e1d-8083-5cb57ef04007" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9feaf227-f257-4e1d-8083-5cb57ef04007" height="400">
 
 - Eliminar usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6aa566fa-2aad-4d0b-b4f2-50778b8d2be5" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6aa566fa-2aad-4d0b-b4f2-50778b8d2be5" height="400">
 
 - Obtener proyectos
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35f7d908-556e-4b8b-b013-56cfaae7a694" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35f7d908-556e-4b8b-b013-56cfaae7a694" height="400">
 
 - Crear nuevo proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/71bdc526-8bca-4d89-8992-6db4358706e5" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/71bdc526-8bca-4d89-8992-6db4358706e5" height="400">
 
 - Actualizar proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/4fce9337-ec25-4eb4-bfe4-69dcf48d1feb" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/4fce9337-ec25-4eb4-bfe4-69dcf48d1feb" height="400">
 
 - Eliminar proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/51fb4669-4f18-45ed-ae28-5ab548e95f7c" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/51fb4669-4f18-45ed-ae28-5ab548e95f7c" height="400">
 
 - Crear nueva tarea
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9cff0484-5ef0-40c8-beee-9cb63f5677fe" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9cff0484-5ef0-40c8-beee-9cb63f5677fe" height="400">
 
 - Crear otra tarea más 
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/441515d6-9566-4e52-866f-1770a8f88c48" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/441515d6-9566-4e52-866f-1770a8f88c48" height="400">
 
 - Actualizar tarea
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/cc8f0307-5739-4692-aab9-284775b53348" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/cc8f0307-5739-4692-aab9-284775b53348" height="400">
 
 - Marcar tarea como completada
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/a58b6fff-6736-4be0-ad41-026059873264" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/a58b6fff-6736-4be0-ad41-026059873264" height="400">
 
 - Obtener tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c8ffafe6-05fd-47e2-a1db-68a2cf0c485a" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c8ffafe6-05fd-47e2-a1db-68a2cf0c485a" height="400">
 
 - Obtener tareas del proyecto creado
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d0362671-401b-4ec5-a4ea-9287c97e33a4" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d0362671-401b-4ec5-a4ea-9287c97e33a4" height="400">
 
 - Asignar tarea a usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e7721f23-e4d7-4724-9fbc-5f2f38553a48" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e7721f23-e4d7-4724-9fbc-5f2f38553a48" height="400">
 
 - Asignar otra tarea a usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9085597a-e071-429d-a83a-5217cf249571" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9085597a-e071-429d-a83a-5217cf249571" height="400">
 
 - Obtener usuarios y tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d512a5b8-375a-4336-a9a9-5b5a90f6d674" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d512a5b8-375a-4336-a9a9-5b5a90f6d674" height="400">
 
 - Obtener usuarios con tareas asignadas (solo las pendientes o en proceso)
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/ce0fc7f0-ae88-4471-9977-b08e4a9b57f8" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/ce0fc7f0-ae88-4471-9977-b08e4a9b57f8" height="400">
 
 - Eliminar proyecto creado
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/720b8959-145f-45ef-88c5-cea5fbbb8665" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/720b8959-145f-45ef-88c5-cea5fbbb8665" height="400">
 
 ## Funcionamiento frontend 
 Se realizaron las siguientes vistas:
