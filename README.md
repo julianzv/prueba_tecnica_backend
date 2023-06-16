@@ -10,6 +10,10 @@
 - `$npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
+## Ejecución del proyecto
+Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en sus rutas correspondientes (/backend y /frontend):
+- `$python app.py`
+- `npm start`
 ## Base de datos
 Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'. Las credenciales pueden encontrarse en 'db_credenciales.txt'.
 ## Funcionamiento backend
@@ -64,12 +68,6 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Crear una asignación de tarea a un usuario (ruta: /api/usuarios_tareas, método POST), body con formato {"usuario_id":1, "tarea_id": 1}
 - Eliminar asignación de tarea a un usuario (ruta: /api/usuarios_tareas/id, método DELETE)
 
-### Consideraciones adicionales
-- El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
-- Un usuario no puede eliminarse a sí mismo, pero si puede eliminar a otros (excepto al administrador). Lo primero está implementado en el frontend, al guardar el id del usuario en el almacenamiento local y comprobando antes de eliminar.
-- Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
-
-
 ## Funcionamiento frontend 
 Se realizaron las siguientes vistas:
 - Vista de Login 
@@ -82,6 +80,11 @@ Se realizaron las siguientes vistas:
 Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend. Mientras que los módulos se encuentran en /components.
 
 La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
+
+### Consideraciones adicionales
+- El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
+- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios.
+- Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
 
 ## Anexo 
 
