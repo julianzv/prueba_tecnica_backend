@@ -63,6 +63,6 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 
 ### Ejemplo (utilizando Postman)
 
-![1-login-admin](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307)
-![2-get-usuarios](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800)
+![1-login-admin](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307 | width=100)
+![2-get-usuarios](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800 | width=100)
 
