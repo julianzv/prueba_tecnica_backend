@@ -38,16 +38,4 @@ CREATE TABLE logout_token (
 );
 
 
---- INSERCION EN TABLA ESTADO
-INSERT INTO public.estado(
-	nombre)
-	VALUES ('pendiente');
-	
-INSERT INTO public.estado(
-	nombre)
-	VALUES ('en proceso');
-
-INSERT INTO public.estado(
-	nombre)
-	VALUES ('completada');
 
