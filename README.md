@@ -2,10 +2,7 @@
 ## Instalación y creación de entorno virtual:
 `$ pip install virtualenv`
 ## Instalaciones requeridas en entorno virtual:
-- `$ pip install flask flask_sqlalchemy flask_cors`
-- `$ pip install psycopg2`
-- `$ pip install bcrypt`
-- `$ pip install python-dotenv`
+- En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Instalaciones requeridas para el Frontend (React)
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
@@ -31,6 +28,7 @@ Se consideraron 5 módulos acorde a los requerimientos:
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
+- Cerrar sesión (ruta: /api/logout, método POST)
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
@@ -51,10 +49,12 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Crear nuevo proyecto (ruta: /api/proyectos, método POST), body con formato {"titulo": proyecto de ejemplo", "descripcion": "descripcion del proyecto"}
 - Eliminar proyecto (ruta: /api/proyectos/id, método DELETE)
 - Actualizar proyecto (ruta: /api/proyectos/id, método PUT), body con formato {"titulo": proyecto de ejemplo actualizado", "descripcion": "descripcion del proyecto actualizado"}
+- Obtener tareas del proyecto (ruta: /api/id_tareas, método GET)
 
 ### Módulo de tareas de usuarios
 - Ver todas las asignaciones de tareas de los usuarios (ruta: /api/usuarios_tareas, método GET)
 - Ver las tareas de un usuario específico (ruta: /api/usuarios_tareas/usuario_id)
+- Ver las tareas asignadas/pendientes de un usuario específico (ruta: /api/usuarios_tareas/usuario_id_asignadas)
 - Crear una asignación de tarea a un usuario (ruta: /api/usuarios_tareas, método POST), body con formato {"usuario_id":1, "tarea_id": 1}
 - Eliminar asignación de tarea a un usuario (ruta: /api/usuarios_tareas/id, método DELETE)
 
