@@ -63,6 +63,7 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 
 ### Ejemplo (utilizando Postman)
 - Login con usuario principal
+
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307" height="500">
 
 - Obtener usuarios
