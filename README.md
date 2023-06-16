@@ -8,6 +8,7 @@
 - `$ pip install python-dotenv`
 ## Instalaciones requeridas para el Frontend (React)
 - `$ npm install react-router-dom`
+- `$ npm install react-hook-form`
 ## Base de datos
 Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'
 ## Funcionamiento backend
