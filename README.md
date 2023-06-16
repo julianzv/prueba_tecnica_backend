@@ -135,7 +135,7 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0cefe046-845c-4847-8629-4b31ba9bbb7c" height="400">
 
-- Obtener tareas asignadas al usuario
+- Obtener tareas asignadas al usuario (pendientes y en progreso)
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/46e47b5d-1fbc-496f-b36c-d71f163a5a8a" height="400">
 
@@ -157,21 +157,23 @@ Las llamadas a la api se realizan desde /utils/api.js, comunicando así el front
 
 ### Capturas (frontend)
 
-- Login
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0494a60d-f982-4e2c-ade0-36b60a318c98" height="350">
+- Inicio de sesión
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6e8e6226-e8ad-43c6-b491-fa750322e5a2" height="350">
 
 - Ver proyectos
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b1ab7739-ab21-40af-a5d6-4a2d6319ef49" height="350">
 
-- Ver usuarios
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b7707b44-5b3d-4b56-96d3-ec21d67e1397" height="350">
-
-- Ver tareas de usuario
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c679ffe3-0562-4cda-adff-a5616b31bb6c" height="350">
-
-- Crear tarea
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e65794fc-8cce-44ff-81bf-920d19e33c0d" height="350">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/dde4de75-3205-445c-9ee6-f99f9093fa2f" height="350">
 
 - Ver tareas asignadas
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e0a5759e-0662-4447-9f90-6838857300d3" height="350">
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="350">
+
+- Ver tareas de usuario
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="350">
+
+- Ver usuarios
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/7fb851d5-9612-4bb2-a1c9-a4abf589f9d4" height="350">
 
