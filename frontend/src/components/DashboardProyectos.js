@@ -23,7 +23,7 @@ const DashboardProyectos = () => {
             setProyectos(data);
         }
         else {
-            alert("Something went wrong");
+            alert("Error al cargar recursos");
         }
     }
 
@@ -34,7 +34,7 @@ const DashboardProyectos = () => {
             setTareas(data);
         }
         else {
-            alert("Something went wrong");
+            alert("Error al cargar recursos");
         }
 
     }
@@ -84,7 +84,7 @@ const DashboardProyectos = () => {
             localStorage.removeItem('token');
             window.location.reload(false);
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -117,7 +117,7 @@ const DashboardProyectos = () => {
             setDescripcion(data.descripcion);
             return data;
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -137,7 +137,7 @@ const DashboardProyectos = () => {
             setTareasProyecto(data);
             return data;
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -149,7 +149,7 @@ const DashboardProyectos = () => {
         if (res.status === 200) {
             window.location.reload(false);
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -159,7 +159,7 @@ const DashboardProyectos = () => {
         if (res.status === 200) {
             closeCreateModal();
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -170,7 +170,7 @@ const DashboardProyectos = () => {
             const data = await res.json();
             closeEditModal();
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 

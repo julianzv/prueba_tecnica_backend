@@ -22,7 +22,7 @@ const Home = () => {
                 setEmail(data.correo);
             }
             else {
-                alert("Something went wrong");
+                alert("Error al cargar recursos");
             }
         }
         fetchUser();
@@ -39,7 +39,7 @@ const Home = () => {
             window.location.reload(false);
         }
         else {
-            alert("Something went wrong");
+            alert("Error al cargar recursos");
         }
     }
 

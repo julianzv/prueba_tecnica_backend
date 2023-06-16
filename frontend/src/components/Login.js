@@ -21,10 +21,10 @@ const Login = () => {
 
         }
         else if (res.status === 401) {
-            alert("Invalid Credentials");
+            alert("Credenciales inválidas");
         }
         else {
-            alert("Something went wrong");
+            alert("Algo salió mal");
         }
     }
 

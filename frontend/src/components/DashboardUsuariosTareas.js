@@ -22,7 +22,7 @@ const DashboardUsuariosTareas = () => {
       localStorage.removeItem('token');
       window.location.reload(false);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -72,11 +72,10 @@ const DashboardUsuariosTareas = () => {
     const res = await api.getUsuarios();
     if (res.status === 200) {
       const data = await res.json();
-      // filter out admin user
-      const newUsuarios = data.filter(usuario => usuario.correo !== 'admin@admin.com');
-      setUsuarios(newUsuarios);
+
+      setUsuarios(data);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -93,7 +92,7 @@ const DashboardUsuariosTareas = () => {
       setUsuarios(newUsuarios);
       closeCreateModal();
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -107,7 +106,7 @@ const DashboardUsuariosTareas = () => {
       const newUsuarios = usuarios.filter(usuario => usuario.id !== id);
       setUsuarios(newUsuarios);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -117,7 +116,7 @@ const DashboardUsuariosTareas = () => {
       const data = await res.json();
       setTareasUsuario(data);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -127,7 +126,7 @@ const DashboardUsuariosTareas = () => {
       const newTareasUsuario = tareasUsuario.filter(tarea => tarea.id !== id);
       setTareasUsuario(newTareasUsuario);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -146,7 +145,7 @@ const DashboardUsuariosTareas = () => {
       alert('El usuario ya tiene la tarea asignada.');
     }
     else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 
@@ -156,7 +155,7 @@ const DashboardUsuariosTareas = () => {
       const data = await res.json();
       setTareas(data);
     } else {
-      alert('Something went wrong');
+      alert('Error al cargar recursos');
     }
   };
 

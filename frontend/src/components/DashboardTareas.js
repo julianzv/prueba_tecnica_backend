@@ -23,7 +23,7 @@ const DashboardTareas = () => {
             localStorage.removeItem('token');
             window.location.reload(false);
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -81,7 +81,7 @@ const DashboardTareas = () => {
             const data = await res.json();
             setTareas(data);
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -100,7 +100,7 @@ const DashboardTareas = () => {
                 setProyectoId(data[0].id);
             }
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -114,7 +114,7 @@ const DashboardTareas = () => {
         if (res.status === 200) {
             setTareas(tareas.filter((tarea) => tarea.id !== id));
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -126,7 +126,7 @@ const DashboardTareas = () => {
             setTareas(tareas.map((t) => (t.id === data.id ? data : t)));
             closeUpdateModal();
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
 
@@ -138,7 +138,7 @@ const DashboardTareas = () => {
             window.location.reload(false);
 
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
 
     }
@@ -154,7 +154,7 @@ const DashboardTareas = () => {
             setTareas([...tareas, data]);
             closeCreateModal();
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
       

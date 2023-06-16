@@ -17,7 +17,7 @@ const DashboardMisTareas = () => {
                 setTareas(data);
             }
             else {
-                alert("Something went wrong");
+                alert("Error al cargar recursos");
             }
         }
         fetchTareas();
@@ -33,7 +33,7 @@ const DashboardMisTareas = () => {
                 setProyectos(data);
             }
             else {
-                alert("Something went wrong");
+                alert("Error al cargar recursos");
             }
         }
         fetchProyectos();
@@ -49,7 +49,7 @@ const DashboardMisTareas = () => {
                 setEmail(data.correo);
             }
             else {
-                alert("Something went wrong");
+                alert("Error al cargar recursos");
             }
         }
         fetchUser();
@@ -65,7 +65,7 @@ const DashboardMisTareas = () => {
             localStorage.removeItem('token');
             window.location.reload(false);
         } else {
-            alert('Something went wrong');
+            alert('Error al cargar recursos');
         }
     }
     const formatDate = (dateString) => {
