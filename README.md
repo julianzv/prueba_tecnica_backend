@@ -157,20 +157,20 @@ Las llamadas a la api se realizan desde /utils/api.js, comunicando así el front
 ### Capturas (frontend)
 
 - Login
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0494a60d-f982-4e2c-ade0-36b60a318c98" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0494a60d-f982-4e2c-ade0-36b60a318c98" height="350">
 
 - Ver proyectos
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b1ab7739-ab21-40af-a5d6-4a2d6319ef49" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b1ab7739-ab21-40af-a5d6-4a2d6319ef49" height="350">
 
 - Ver usuarios
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b7707b44-5b3d-4b56-96d3-ec21d67e1397" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b7707b44-5b3d-4b56-96d3-ec21d67e1397" height="350">
 
 - Ver tareas de usuario
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c679ffe3-0562-4cda-adff-a5616b31bb6c" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c679ffe3-0562-4cda-adff-a5616b31bb6c" height="350">
 
 - Crear tarea
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e65794fc-8cce-44ff-81bf-920d19e33c0d" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e65794fc-8cce-44ff-81bf-920d19e33c0d" height="350">
 
 - Ver tareas asignadas
-<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e0a5759e-0662-4447-9f90-6838857300d3" height="400">
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e0a5759e-0662-4447-9f90-6838857300d3" height="350">
 
