@@ -6,6 +6,7 @@
 ## Instalaciones requeridas en entorno virtual:
 - En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Creación del proyecto en React e instalaciones necesarias
+- Es necesario tener NodeJS instalado.
 - `$npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
@@ -35,7 +36,7 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
-- Crear nuevo usuario (ruta: /api/usuarios, método POST), body con formato {"correo": "correo@ejemplo.com", "contraseña": "contraseña"}
+- Crear nuevo usuario (ruta: /api/usuarios, método POST), body con formato {"correo": "correo@ejemplo.com", "contraseña": "contraseña"}. La contraseña se encripta con el algoritmo bcrypt, almacenandose así en la  base de datos. 
 - Borrar usuario (ruta: /api/usuarios/id, método DELETE)
   
 ### Módulo de tareas
@@ -142,4 +143,34 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/720b8959-145f-45ef-88c5-cea5fbbb8665" height="500">
 
+## Funcionamiento frontend 
+Se realizaron las siguientes vistas:
+- Vista de Login 
+- Vista de Home, rutas:
+  - Gestión de usuarios y tareas (permite ver, agregar, eliminar usuarios, asignarles tareas y eliminar sus tareas).
+  - Gestión de tareas (permite ver, agregar, editar, eliminar y marcar completadas las tareas).
+  - Ver mis tareas (muestra en pantalla una tabla con la lista de tareas que no se han terminado del usuario que ingresó.
+  - Gestión de proyectos (permite agregar, editar, eliminar y ver los detalles y tareas de cada proyecto)  
+
+Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend.
+
+### Capturas (frontend)
+
+- Login
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0494a60d-f982-4e2c-ade0-36b60a318c98" height="500">
+
+- Ver proyectos
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b1ab7739-ab21-40af-a5d6-4a2d6319ef49" height="500">
+
+- Ver usuarios
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/b7707b44-5b3d-4b56-96d3-ec21d67e1397" height="500">
+
+- Ver tareas de usuario
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c679ffe3-0562-4cda-adff-a5616b31bb6c" height="500">
+
+- Crear tarea
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e65794fc-8cce-44ff-81bf-920d19e33c0d" height="500">
+
+- Ver tareas asignadas
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e0a5759e-0662-4447-9f90-6838857300d3" height="500">
 
