@@ -6,6 +6,7 @@
 ## Instalaciones requeridas en entorno virtual:
 - En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Creación del proyecto en React e instalaciones necesarias
+- Es necesario tener NodeJS instalado.
 - `$npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
@@ -35,7 +36,7 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
-- Crear nuevo usuario (ruta: /api/usuarios, método POST), body con formato {"correo": "correo@ejemplo.com", "contraseña": "contraseña"}
+- Crear nuevo usuario (ruta: /api/usuarios, método POST), body con formato {"correo": "correo@ejemplo.com", "contraseña": "contraseña"}. La contraseña se encripta con el algoritmo bcrypt, almacenandose así en la  base de datos. 
 - Borrar usuario (ruta: /api/usuarios/id, método DELETE)
   
 ### Módulo de tareas
@@ -64,82 +65,115 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 ### Ejemplo (utilizando Postman)
 - Login con usuario principal
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d36aa61-d53b-4ea8-8507-c7e5bc776307" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/5428a312-8739-41b0-9e7d-876055459614" height="400">
 
 - Obtener usuarios
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/452c1847-da04-4ba6-927f-94bd3410b800" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/336e27a8-4f1f-4a6a-9f8f-12ba8fe44b63" height="400">
 
 - Ver usuario específico
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/92e4bded-c1ae-43d1-9640-2a8c38407488" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/8917d749-f382-4354-aa57-37c10bcd0261" height="400">
 
 - Crear nuevo usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9feaf227-f257-4e1d-8083-5cb57ef04007" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2ca1524b-5b8a-4521-b297-4471e2a4690f" height="400">
 
 - Eliminar usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6aa566fa-2aad-4d0b-b4f2-50778b8d2be5" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/343ef02f-d0d4-4dbb-acc6-5468b414320f" height="400">
 
 - Obtener proyectos
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35f7d908-556e-4b8b-b013-56cfaae7a694" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/f94c8322-6ee9-4097-98de-c533ab5980a4" height="400">
 
 - Crear nuevo proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/71bdc526-8bca-4d89-8992-6db4358706e5" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c495a01d-dc3d-4116-b1da-9bbec870f34e" height="400">
 
 - Actualizar proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/4fce9337-ec25-4eb4-bfe4-69dcf48d1feb" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/a37be5ab-ecae-48c5-ab4f-c6e9f1db258b" height="400">
 
 - Eliminar proyecto
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/51fb4669-4f18-45ed-ae28-5ab548e95f7c" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/df1b99cf-0a04-400f-9f70-48625feab7d2" height="400">
 
 - Crear nueva tarea
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9cff0484-5ef0-40c8-beee-9cb63f5677fe" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/06fa05e4-50a7-43d2-8e85-7aa9faa16bb3" height="400">
 
 - Crear otra tarea más 
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/441515d6-9566-4e52-866f-1770a8f88c48" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/3ce9b14f-3c7b-406d-acaa-36aa5ed46fc3" height="400">
 
 - Actualizar tarea
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/cc8f0307-5739-4692-aab9-284775b53348" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/8aa0b56b-3551-49cd-8d7b-d99102d9e14f" height="400">
 
 - Marcar tarea como completada
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/a58b6fff-6736-4be0-ad41-026059873264" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/7edb10ad-0351-475c-b9fd-2f52ad79a32d" height="400">
 
 - Obtener tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/c8ffafe6-05fd-47e2-a1db-68a2cf0c485a" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/f53f3bfa-3563-42bf-8138-b0892b479d2d" height="400">
 
-- Obtener tareas del proyecto creado
+- Obtener proyectos y tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d0362671-401b-4ec5-a4ea-9287c97e33a4" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/504e5e25-dca1-4112-8de0-1aaa53980b3f" height="400">
 
-- Asignar tarea a usuario
+- Crear asignación de tarea a usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/e7721f23-e4d7-4724-9fbc-5f2f38553a48" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/dad09dde-651f-4031-9494-c686a92889b6" height="400">
 
-- Asignar otra tarea a usuario
+- Crear otra asignación de tarea a usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/9085597a-e071-429d-a83a-5217cf249571" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/cae03caf-133f-4e46-9554-d9173e04d3ee" height="400">
 
 - Obtener usuarios y tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/d512a5b8-375a-4336-a9a9-5b5a90f6d674" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0cefe046-845c-4847-8629-4b31ba9bbb7c" height="400">
 
-- Obtener usuarios con tareas asignadas (solo las pendientes o en proceso)
+- Obtener tareas asignadas al usuario (pendientes y en progreso)
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/ce0fc7f0-ae88-4471-9977-b08e4a9b57f8" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/46e47b5d-1fbc-496f-b36c-d71f163a5a8a" height="400">
 
 - Eliminar proyecto creado
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/720b8959-145f-45ef-88c5-cea5fbbb8665" height="500">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2b863271-f17c-47cf-92b8-f27b5b8eeb01" height="400">
 
+
+## Funcionamiento frontend 
+Se realizaron las siguientes vistas:
+- Vista de Login 
+- Vista de Home, rutas:
+  - Gestión de usuarios y tareas (permite ver, agregar, eliminar usuarios, asignarles tareas y eliminar sus tareas).
+  - Gestión de tareas (permite ver, agregar, editar, eliminar y marcar completadas las tareas).
+  - Ver mis tareas (muestra en pantalla una tabla con la lista de tareas que no se han terminado del usuario que ingresó.
+  - Gestión de proyectos (permite agregar, editar, eliminar y ver los detalles y tareas de cada proyecto)  
+
+Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend.
+
+### Capturas (frontend)
+
+- Inicio de sesión
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6e8e6226-e8ad-43c6-b491-fa750322e5a2" height="350">
+
+- Ver proyectos
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/dde4de75-3205-445c-9ee6-f99f9093fa2f" height="350">
+
+- Ver tareas asignadas
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="350">
+
+- Ver tareas de usuario
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="350">
+
+- Ver usuarios
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/7fb851d5-9612-4bb2-a1c9-a4abf589f9d4" height="350">
 
