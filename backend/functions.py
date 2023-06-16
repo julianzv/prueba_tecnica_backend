@@ -19,7 +19,7 @@ def login_check(data):
         token = jwt.encode({'id':usuario.id,'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=30)},os.environ['SECRET_KEY'])
         db.session.add(LogoutToken(token, datetime.datetime.utcnow()))
         db.session.commit()
-        return jsonify({'id': usuario.id, 'token':token})
+        return jsonify({'message':'Sesión iniciada','id': usuario.id, 'token':token})
     else:
         return jsonify({'message':'Contraseña incorrecta'}), 401
     
