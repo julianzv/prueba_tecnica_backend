@@ -113,12 +113,35 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 
 - Marcar tarea como completada
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/38f11976-81f4-4322-8e79-4167c9cc4496" height="400">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/7edb10ad-0351-475c-b9fd-2f52ad79a32d" height="400">
 
-- Eliminar tarea
+- Obtener tareas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6d4c31e0-3ea5-4d46-903c-9bdc42ae6e5a" height="400">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/f53f3bfa-3563-42bf-8138-b0892b479d2d" height="400">
 
+- Obtener proyectos y tareas
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/504e5e25-dca1-4112-8de0-1aaa53980b3f" height="400">
+
+- Crear asignación de tarea a usuario
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/dad09dde-651f-4031-9494-c686a92889b6" height="400">
+
+- Crear otra asignación de tarea a usuario
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/cae03caf-133f-4e46-9554-d9173e04d3ee" height="400">
+
+- Obtener usuarios y tareas
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/0cefe046-845c-4847-8629-4b31ba9bbb7c" height="400">
+
+- Obtener tareas asignadas al usuario
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/46e47b5d-1fbc-496f-b36c-d71f163a5a8a" height="400">
+
+- Eliminar proyecto creado
+
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2b863271-f17c-47cf-92b8-f27b5b8eeb01" height="400">
 
 
 ## Funcionamiento frontend 
