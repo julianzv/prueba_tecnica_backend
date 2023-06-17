@@ -15,7 +15,9 @@ Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en su
 - `$python app.py`
 - `npm start`
 ## Base de datos
-Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'. Las credenciales pueden encontrarse en 'db_credenciales.txt'.
+Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. Este es el modelo E-R diseñado para la base de datos:
+![modelo e-r](https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2c304d2f-c3bb-405d-b356-bc9a76a83101)
+
 ## Funcionamiento backend
 Es posible probar los endpoints con plataformas API como Postman.
 ### Inicio aplicación
