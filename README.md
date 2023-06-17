@@ -196,6 +196,10 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
 - Inicio de sesión
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/6e8e6226-e8ad-43c6-b491-fa750322e5a2" height="350">
+  
+- Home
+
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2bbf6b5f-a7bf-43d6-9a0c-5b41324cb15d" height="350">
 
 - Ver proyectos
 
@@ -203,17 +207,26 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
   
 - Ver tareas
 
- <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35b29be8-25c2-459e-a6ad-259914e78901" height="350">
+ <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35b29be8-25c2-459e-a6ad-259914e78901" height="300">
 
 - Ver tareas asignadas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="350">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="300">
 
 - Ver tareas de usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="350">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="300">
 
 - Ver usuarios
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/7fb851d5-9612-4bb2-a1c9-a4abf589f9d4" height="350">
+
+- Crear tarea
+
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/1fea5039-0ac6-4b65-a192-06dd16b4e85a" height="350">
+
+- Editar proyecto
+
+<img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/06f81b24-bd36-457a-9ca3-7ef1d47013ba" height="350">
+
 
