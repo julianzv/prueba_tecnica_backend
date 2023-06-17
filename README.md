@@ -38,7 +38,7 @@ Se consideraron 5 módulos en el backend acorde a los requerimientos:
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
-- Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté corriendo en React, para poder obtener el token de la sesión
+- Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté ejecutandose en React, dado a que los tokens de las sesiones se guardan en el almacenamiento local*
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
