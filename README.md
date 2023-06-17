@@ -32,15 +32,20 @@ Este es el modelo entidad-relación resultante de la base de datos diseñada:
 
 ## Funcionamiento backend
 Es posible probar los endpoints con plataformas API como Postman.
-### Inicio aplicación
-Al ejecutar la aplicación (/backend/app.py), se insertan valores base, que son los estados de las tareas ("pendiente", "en progreso" y "completada") y también un usuario inicial. Al estar los estados asociados a las tareas en tablas separadas, se consideran las id de los estados:
-- 1: pendiente
-- 2: en progreso
-- 3: completada
 
 Para conectar con la base de datos, se utiliza la librería SQLAlchemy. Se utiliza CORS para permitir la comunicación entre el backend y el frontend.
 
 La aplicación corre en la ruta http://localhost:8080/, por ejemplo para ver los usuarios la ruta será http://localhost:8080/api/usuarios (método GET).
+
+Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
+
+Se trabajó además con la librería dotenv, para utilizar variables de entorno (en este caso, la llave secreta para codificar los tokens).
+
+### Inicio aplicación
+Al ejecutar la aplicación (/backend/app.py), se insertan valores base de forma automática, que son los estados de las tareas ("pendiente", "en progreso" y "completada") y también un usuario inicial administrador. Al estar los estados asociados a las tareas en tablas separadas, se consideran las id de los estados:
+- 1: pendiente
+- 2: en progreso
+- 3: completada
 
 Se consideraron 5 módulos en el backend acorde a los requerimientos:
 - Login
@@ -50,9 +55,11 @@ Se consideraron 5 módulos en el backend acorde a los requerimientos:
 - Tareas de usuarios
 
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
+
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
 - Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté ejecutandose en React, dado a que los tokens de las sesiones se guardan en el almacenamiento local*
+
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
@@ -98,7 +105,6 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
 ### Consideraciones adicionales
 - El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
 - Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios.
-- Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
 
 ## Anexo 
 
