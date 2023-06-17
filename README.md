@@ -1,32 +1,51 @@
 # Prueba técnica: Sistema de Gestión de Tareas
 ## Instalación, creación y ejecución de entorno virtual:
 - `$ pip install virtualenv`
-- `$python -m venv venv`
-- `$venv\Script\activate`
+- `$ python -m venv venv`
+- `$ venv\Script\activate`
 ## Instalaciones requeridas en entorno virtual:
-- En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
+- En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$ pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Creación del proyecto en React e instalaciones necesarias
 - Es necesario tener NodeJS instalado.
-- `$npm create-react-app frontend`
+- `$ npx create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
 ## Ejecución del proyecto
 Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en sus rutas correspondientes (/backend y /frontend):
-- `$python app.py`
-- `npm start`
+- `$ python app.py`
+- `$ npm start`
 ## Base de datos
-Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'. Las credenciales pueden encontrarse en 'db_credenciales.txt'.
+Se utilizó PostgreSQL, las queries de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. 
+
+Las tablas de la base de datos son las siguientes:
+- Usuario (id, correo, contraseña)
+- Tarea (id, titulo, descripcion, fecha_venc, estado_id, proyecto_id)
+- Proyecto (id, titulo, descripcion)
+- Usuario_tarea (id, usuario_id, tarea_id)
+
+Y adicionalmente se creó la tabla LogoutToken, para almacenar los token de las sesiones activas.
+- LogoutToken (id, token)
+
+Este es el modelo entidad-relación resultante de la base de datos diseñada:
+
+ <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2c304d2f-c3bb-405d-b356-bc9a76a83101" height="500">
+
 ## Funcionamiento backend
 Es posible probar los endpoints con plataformas API como Postman.
-### Inicio aplicación
-Al ejecutar la aplicación (/backend/app.py), se insertan valores base, que son los estados de las tareas ("pendiente", "en progreso" y "completada") y también un usuario inicial. Al estar los estados asociados a las tareas en tablas separadas, se consideran las id de los estados:
-- 1: pendiente
-- 2: en progreso
-- 3: completada
 
 Para conectar con la base de datos, se utiliza la librería SQLAlchemy. Se utiliza CORS para permitir la comunicación entre el backend y el frontend.
 
 La aplicación corre en la ruta http://localhost:8080/, por ejemplo para ver los usuarios la ruta será http://localhost:8080/api/usuarios (método GET).
+
+Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
+
+Se trabajó además con la librería dotenv, para utilizar variables de entorno (en este caso, la llave secreta para codificar los tokens).
+
+### Inicio aplicación
+Al ejecutar la aplicación (/backend/app.py), se insertan valores base de forma automática, que son los estados de las tareas ("pendiente", "en progreso" y "completada") y también un usuario inicial administrador. Al estar los estados asociados a las tareas en tablas separadas, se consideran las id de los estados:
+- 1: pendiente
+- 2: en progreso
+- 3: completada
 
 Se consideraron 5 módulos en el backend acorde a los requerimientos:
 - Login
@@ -36,9 +55,11 @@ Se consideraron 5 módulos en el backend acorde a los requerimientos:
 - Tareas de usuarios
 
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
+
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
 - Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté ejecutandose en React, dado a que los tokens de las sesiones se guardan en el almacenamiento local*
+
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
@@ -81,10 +102,9 @@ Las llamadas a la api se realizan desde /utils/api.js, comunicando así el front
 
 La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
 
-### Consideraciones adicionales
+## Consideraciones adicionales
 - El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
-- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios.
-- Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
+- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios. *Esto está controlado desde el frontend, dado a que se almacena el id del usuario que ingresó en el sistema* 
 
 ## Anexo 
 
@@ -180,6 +200,10 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
 - Ver proyectos
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/dde4de75-3205-445c-9ee6-f99f9093fa2f" height="350">
+  
+- Ver tareas
+
+ <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35b29be8-25c2-459e-a6ad-259914e78901" height="350">
 
 - Ver tareas asignadas
 
