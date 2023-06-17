@@ -64,13 +64,13 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
 - Crear nuevo usuario (ruta: /api/usuarios, método POST), body con formato {"correo": "correo@ejemplo.com", "contraseña": "contraseña"}. La contraseña se encripta con el algoritmo bcrypt, almacenandose así en la  base de datos. 
-- Borrar usuario (ruta: /api/usuarios/id, método DELETE)
+- Borrar usuario (ruta: /api/usuarios/id, método DELETE). Esta acción también elimina todas las asociaciones con tareas del usuario. 
   
 ### Módulo de tareas
 - Ver todas las tareas (ruta: /api/tareas, método GET)
 - Ver tarea específica (ruta: /api/tareas/id, método GET)
 - Crear nueva tarea (ruta /api/tareas, método POST), body con formato {"titulo": "tarea de ejemplo", "descripcion": "descripcion de la tarea", "fecha_venc": "15-06-2023", "estado_id": 2, "proyecto_id": 1}
-- Eliminar tarea (ruta: /api/tareas/id, método DELETE)
+- Eliminar tarea (ruta: /api/tareas/id, método DELETE). Esta acción también elimina todas las asociaciones con usuarios de la tarea.
 - Actualizar tarea (ruta: /api/tareas/id, método PUT), body con formato {"titulo": "tarea de ejemplo actualizada", "descripcion": "descripcion de la tarea actualizada", "fecha_venc": "15-06-2023", "estado_id": 3, "proyecto_id": 1}
 - Marcar tarea como completada (ruta: /api/tareas/id_ok, método PUT)
 
@@ -78,7 +78,7 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Ver todos los proyectos (ruta: /api/proyectos, método GET)
 - Ver proyecto específico (ruta: /api/proyectos/id, método GET)
 - Crear nuevo proyecto (ruta: /api/proyectos, método POST), body con formato {"titulo": proyecto de ejemplo", "descripcion": "descripcion del proyecto"}
-- Eliminar proyecto (ruta: /api/proyectos/id, método DELETE)
+- Eliminar proyecto (ruta: /api/proyectos/id, método DELETE). Esta acción también elimina todas las tareas asociadas al proyecto, y sus asociaciones con usuarios.
 - Actualizar proyecto (ruta: /api/proyectos/id, método PUT), body con formato {"titulo": proyecto de ejemplo actualizado", "descripcion": "descripcion del proyecto actualizado"}
 - Obtener tareas del proyecto (ruta: /api/id_tareas, método GET)
 
