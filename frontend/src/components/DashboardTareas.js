@@ -29,7 +29,7 @@ const DashboardTareas = () => {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        const day = date.getDate();
+        const day = date.getDate() + 1;
         const month = date.getMonth() + 1;
         const year = date.getFullYear().toString().slice(-2);
         return `${day}/${month}/${year}`;
