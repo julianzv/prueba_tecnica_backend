@@ -1,4 +1,4 @@
-# Prueba técnica de Backend
+# Prueba técnica: Sistema de Gestión de Tareas
 ## Instalación, creación y ejecución de entorno virtual:
 - `$ pip install virtualenv`
 - `$python -m venv venv`
@@ -10,6 +10,10 @@
 - `$npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
+## Ejecución del proyecto
+Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en sus rutas correspondientes (/backend y /frontend):
+- `$python app.py`
+- `npm start`
 ## Base de datos
 Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt', mientras que el modelo entidad-relación se encuentra en la imagen 'modelo e-r.png'. Las credenciales pueden encontrarse en 'db_credenciales.txt'.
 ## Funcionamiento backend
@@ -34,7 +38,7 @@ Se consideraron 5 módulos en el backend acorde a los requerimientos:
 En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id. 
 ### Módulo login
 - Iniciar sesión (ruta: /api/login, método POST), body con formate {""correo": "correo@ejemplo.com", "contraseña": "contraseña"}
-- Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté corriendo en React, para poder obtener el token de la sesión
+- Cerrar sesión (ruta: /api/logout, método POST), *esta función requiere que la aplicación esté ejecutandose en React, dado a que los tokens de las sesiones se guardan en el almacenamiento local*
 ### Módulo usuarios
 - Ver todos los usuarios (ruta: /api/usuarios, método GET)
 - Ver usuario específico (ruta: /api/usuarios/id, método GET) (ejemplo: /api/usuarios/1)
@@ -64,7 +68,27 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
 - Crear una asignación de tarea a un usuario (ruta: /api/usuarios_tareas, método POST), body con formato {"usuario_id":1, "tarea_id": 1}
 - Eliminar asignación de tarea a un usuario (ruta: /api/usuarios_tareas/id, método DELETE)
 
-### Ejemplo (utilizando Postman)
+## Funcionamiento frontend 
+Se realizaron las siguientes vistas:
+- Vista de Login 
+- Vista de Home, rutas:
+  - Gestión de usuarios y tareas (permite ver, agregar, eliminar usuarios, asignarles tareas y eliminar sus tareas).
+  - Gestión de tareas (permite ver, agregar, editar, eliminar y marcar completadas las tareas).
+  - Ver mis tareas (muestra en pantalla una tabla con la lista de tareas que no se han terminado del usuario que ingresó.
+  - Gestión de proyectos (permite agregar, editar, eliminar y ver los detalles y tareas de cada proyecto)  
+
+Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend. Mientras que los módulos se encuentran en /components.
+
+La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
+
+### Consideraciones adicionales
+- El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
+- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios.
+- Para la generación de tokens, se utilizó la libería de Python PyJWT, los cuales se guardan en la base de datos y para las sesiones desde el frontend, se guardan en el almacenamiento local.
+
+## Anexo 
+
+### Ejemplo de funcionamiento del backend (utilizando Postman)
 - Login con usuario principal
 
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/5428a312-8739-41b0-9e7d-876055459614" height="400">
@@ -146,18 +170,6 @@ En las rutas que utilicen "id" o "tabla_id", reemplazar por el número de id.
   <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2b863271-f17c-47cf-92b8-f27b5b8eeb01" height="400">
 
 
-## Funcionamiento frontend 
-Se realizaron las siguientes vistas:
-- Vista de Login 
-- Vista de Home, rutas:
-  - Gestión de usuarios y tareas (permite ver, agregar, eliminar usuarios, asignarles tareas y eliminar sus tareas).
-  - Gestión de tareas (permite ver, agregar, editar, eliminar y marcar completadas las tareas).
-  - Ver mis tareas (muestra en pantalla una tabla con la lista de tareas que no se han terminado del usuario que ingresó.
-  - Gestión de proyectos (permite agregar, editar, eliminar y ver los detalles y tareas de cada proyecto)  
-
-Las llamadas a la api se realizan desde /utils/api.js, comunicando así el frontend y el backend. Mientras que los módulos se encuentran en /components.
-
-La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
 
 ### Capturas (frontend)
 
