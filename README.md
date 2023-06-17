@@ -104,7 +104,7 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
 
 ### Consideraciones adicionales
 - El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
-- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios.
+- Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios. *Esto está controlado desde el frontend, dado a que se almacena el id del usuario que ingresó en el sistema* 
 
 ## Anexo 
 
