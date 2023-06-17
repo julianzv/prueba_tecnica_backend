@@ -24,7 +24,7 @@ Las tablas de la base de datos son las siguientes:
 - Usuario_tarea (id, usuario_id, tarea_id)
 
 Y adicionalmente se creó la tabla LogoutToken, para almacenar los token de las sesiones activas.
-- Token (id, token)
+- LogoutToken (id, token)
 
 Este es el modelo entidad-relación resultante de la base de datos diseñada:
 
