@@ -7,7 +7,7 @@
 - En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$ pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Creación del proyecto en React e instalaciones necesarias
 - Es necesario tener NodeJS instalado.
-- `$ npm create-react-app frontend`
+- `$ npx create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
 ## Ejecución del proyecto
