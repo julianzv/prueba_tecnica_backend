@@ -102,7 +102,7 @@ Las llamadas a la api se realizan desde /utils/api.js, comunicando así el front
 
 La aplicación verifica que el usuario haya iniciado sesión antes de redirigirlo a los módulos, esto se realiza revisando si existe su token de usuario en el almacenamiento local. Cuando el usuario cierra sesión, este token se elimina.
 
-### Consideraciones adicionales
+## Consideraciones adicionales
 - El primer usuario en ser creado tiene rol de administrador. Este usuario no puede ser eliminado, y de eliminarse en la base de datos, se creará de nuevo al iniciar la aplicación.
 - Un usuario que no tiene rol de administrador no puede eliminarse a sí mismo ni a otros usuarios. Pero sí puede asignar y eliminar tareas a otros usuarios. *Esto está controlado desde el frontend, dado a que se almacena el id del usuario que ingresó en el sistema* 
 
