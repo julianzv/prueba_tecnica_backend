@@ -16,7 +16,8 @@ Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en su
 - `npm start`
 ## Base de datos
 Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. Este es el modelo E-R diseñado para la base de datos:
- <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2c304d2f-c3bb-405d-b356-bc9a76a83101" height="400">
+
+ <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2c304d2f-c3bb-405d-b356-bc9a76a83101" height="500">
 
 
 ## Funcionamiento backend
