@@ -13,7 +13,7 @@
 ## Ejecución del proyecto
 Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en sus rutas correspondientes (/backend y /frontend):
 - `$python app.py`
-- `npm start`
+- `$npm start`
 ## Base de datos
 Se utilizó PostgreSQL, las queries de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. 
 
