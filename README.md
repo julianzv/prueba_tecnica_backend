@@ -1,19 +1,19 @@
 # Prueba técnica: Sistema de Gestión de Tareas
 ## Instalación, creación y ejecución de entorno virtual:
 - `$ pip install virtualenv`
-- `$python -m venv venv`
-- `$venv\Script\activate`
+- `$ python -m venv venv`
+- `$ venv\Script\activate`
 ## Instalaciones requeridas en entorno virtual:
-- En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$pip install -r requirements.txt`. Se utilizó el framework Flask.
+- En archivo /backend/requirements-python.txt se encuentra una lista de las librerías utilizadas, las cuales pueden instalarse con `$ pip install -r requirements.txt`. Se utilizó el framework Flask.
 ## Creación del proyecto en React e instalaciones necesarias
 - Es necesario tener NodeJS instalado.
-- `$npm create-react-app frontend`
+- `$ npm create-react-app frontend`
 - `$ npm install react-router-dom`
 - `$ npm install react-hook-form`
 ## Ejecución del proyecto
 Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en sus rutas correspondientes (/backend y /frontend):
-- `$python app.py`
-- `$npm start`
+- `$ python app.py`
+- `$ npm start`
 ## Base de datos
 Se utilizó PostgreSQL, las queries de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. 
 
