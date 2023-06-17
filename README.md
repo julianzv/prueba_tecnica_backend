@@ -203,15 +203,15 @@ La aplicación verifica que el usuario haya iniciado sesión antes de redirigirl
   
 - Ver tareas
 
- <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35b29be8-25c2-459e-a6ad-259914e78901" height="350">
+ <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/35b29be8-25c2-459e-a6ad-259914e78901" height="300">
 
 - Ver tareas asignadas
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="350">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/012aa54f-30d0-44ab-a4a1-1be56d69c274" height="300">
 
 - Ver tareas de usuario
 
-  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="350">
+  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/732e1acb-3795-4122-be53-c1966c3a8e7d" height="300">
 
 - Ver usuarios
 
