@@ -15,10 +15,20 @@ Se pueden utilizar dos ventanas de la terminal, y se utilizan los comandos en su
 - `$python app.py`
 - `npm start`
 ## Base de datos
-Se utilizó PostgreSQL, las querys de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. Este es el modelo E-R diseñado para la base de datos:
+Se utilizó PostgreSQL, las queries de creación de tablas se encuentran en el archivo 'db_querys.txt'. Las credenciales pueden encontrarse en 'db_credenciales.txt'. 
+
+Las tablas de la base de datos son las siguientes:
+- Usuario (id, correo, contraseña)
+- Tarea (id, titulo, descripcion, fecha_venc, estado_id, proyecto_id)
+- Proyecto (id, titulo, descripcion)
+- Usuario_tarea (id, usuario_id, tarea_id)
+
+Y adicionalmente se creó la tabla LogoutToken, para almacenar los token de las sesiones activas.
+- Token (id, token)
+
+Este es el modelo entidad-relación resultante de la base de datos diseñada:
 
  <img src="https://github.com/virtualjoker00/prueba_tecnica_backend/assets/108155631/2c304d2f-c3bb-405d-b356-bc9a76a83101" height="500">
-
 
 ## Funcionamiento backend
 Es posible probar los endpoints con plataformas API como Postman.
