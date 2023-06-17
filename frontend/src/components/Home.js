@@ -1,14 +1,19 @@
+/*
+Página de Home, se muestra después de iniciar sesión
+- Da un mensaje de bienvenida y permite navegar a las otras páginas
+- Opciones de navegación:
+- DashboardUsuariosTareas
+- DashboardTareas
+- DashboardProyectos
+- DashboardMisTareas
+*/
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
 import styles from '../styles.css';
 
-// Página de Home, se muestra después de iniciar sesión
-// Da un mensaje de bienvenida y un botón para cerrar sesión
-// Opciones de navegación:
-// - DashboardUsuariosTareas
-// - DashboardTareas
-// - DashboardProyectos
+
 const Home = () => {
     const navigate = useNavigate();
     const user_id = localStorage.getItem('user_id');

@@ -1,3 +1,10 @@
+/*
+Login:
+Permite al usuario iniciar sesión en la aplicación
+Almacena el token y el id del usuario en el almacenamiento local en caso de que las credenciales sean correctas
+*/
+
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
@@ -15,8 +22,6 @@ const Login = () => {
             const data = await res.json();
             localStorage.setItem('user_id', data.id);
             localStorage.setItem('token', data.token);
-            console.log(data['token']);
-            // refresh page
             window.location.reload(false);
 
         }

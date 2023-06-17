@@ -1,3 +1,10 @@
+/*
+DashboardUsuariosTareas:
+Muestra a todos los usuarios, y permite crear, editar y eliminar usuarios.
+Además permite ver, agregar y eliminar tareas de cada usuario.
+Accesible desde la vista de Home.
+*/
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
@@ -53,7 +60,6 @@ const DashboardUsuariosTareas = () => {
 
   const closeCreateModal = () => {
     setShowCreateModal(false);
-    //refresh page
     window.location.reload(false);
   };
 

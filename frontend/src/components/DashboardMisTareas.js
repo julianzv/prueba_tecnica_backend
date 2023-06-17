@@ -1,3 +1,10 @@
+/*
+DashboardMisTareas: 
+Componente que muestra el listado de las tareas asignadas al usuario logueado.
+Accesible desde la vista de Home.
+*/
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';

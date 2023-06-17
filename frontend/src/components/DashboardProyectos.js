@@ -1,3 +1,12 @@
+/*
+DashboardProyectos:
+Componente que muestra el listado de los proyectos.
+Permite ver, crear, editar y eliminar proyectos.
+Muestra además las tareas asociadas a cada proyecto.
+Accesible desde la vista de Home.
+*/
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
@@ -53,7 +62,6 @@ const DashboardProyectos = () => {
 
     const closeCreateModal = () => {
         setShowCreateModal(false);
-        //refresh page
         window.location.reload(false);
     }
 

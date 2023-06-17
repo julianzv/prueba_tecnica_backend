@@ -1,3 +1,11 @@
+/*
+DashboardTareas:
+Muestra todas las tareas del sistema.
+Permite crear, editar y eliminar tareas. Además de marcarlas como completadas.
+Accesible desde la vista de Home.
+*/
+
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
@@ -54,7 +62,6 @@ const DashboardTareas = () => {
 
     const closeCreateModal = () => {
         setShowCreateModal(false);
-        //refresh page
         window.location.reload(false);
     }
 
@@ -71,7 +78,6 @@ const DashboardTareas = () => {
 
     const closeUpdateModal = () => {
         setShowUpdateModal(false);
-        //refresh page
         window.location.reload(false);
     }
 
