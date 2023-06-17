@@ -22,6 +22,7 @@ Las tablas de la base de datos son las siguientes:
 - Tarea (id, titulo, descripcion, fecha_venc, estado_id, proyecto_id)
 - Proyecto (id, titulo, descripcion)
 - Usuario_tarea (id, usuario_id, tarea_id)
+- Estado (id, nombre)
 
 Y adicionalmente se creó la tabla LogoutToken, para almacenar los token de las sesiones activas.
 - LogoutToken (id, token)
