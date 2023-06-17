@@ -101,7 +101,14 @@ const DashboardUsuariosTareas = () => {
       alert('No puedes eliminar tu propio usuario.');
       return;
     }
-    // if id belongs to admin user, alert
+    const res00 = await api.getUsuario(user_id);
+    if (res00.status === 200) {
+      const data = await res00.json();
+      if (!data.es_admin) {
+        alert('No puedes eliminar un usuario si no eres administrador.');
+        return;
+      }
+    }
     const res0 = await api.getUsuario(id);
     if (res0.status === 200) {
       const data = await res0.json();

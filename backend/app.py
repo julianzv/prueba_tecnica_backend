@@ -17,14 +17,14 @@ from functions import login_check, blacklist_token
 from dotenv import load_dotenv
 load_dotenv('.env')
 
-# estados para insertar en caso de no existir
+# Estados para insertar en caso de no existir
 lista_estados = ["pendiente","en progreso","completada"]
 
 # App
 app = Flask(__name__)
 CORS(app)
 
-# Database
+# Base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/gestion_tareas'
 
 # Init db
@@ -53,32 +53,39 @@ def get_estados():
     estados_json = [estado.to_JSON() for estado in estados]
     return jsonify(estados_json)
 
-# Modulo de autenticación
+################# Modulo de autenticación #################
+
+# Ruta para iniciar sesión
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
     return login_check(data)
 
+
+# Ruta para cerrar sesión
 @app.route('/api/logout', methods=['POST'])
 @blacklist_token
 def logout():
     return jsonify({'message':'Sesión cerrada'})
 
 
-# Modulo de usuarios
+################# Modulo de usuarios #################
+
+# Ruta para obtener todos los usuarios
 @app.route('/api/usuarios',methods=['GET'])
-#@admin_token
 def get_usuarios():
     usuarios = Usuario.query.all()
     usuarios_json = [usuario.to_JSON() for usuario in usuarios]
     return jsonify(usuarios_json)
 
+# Ruta para obtener un usuario por id
 @app.route('/api/usuarios/<id>',methods=['GET'])
 def get_usuario_by_id(id):
     usuario = Usuario.query.get(id)
     usuario_json = usuario.to_JSON()
     return jsonify(usuario_json)
 
+# Ruta para crear un usuario
 @app.route('/api/usuarios', methods=['POST'])
 def create_usuario():
     data = request.get_json()
@@ -88,6 +95,7 @@ def create_usuario():
     db.session.commit()
     return jsonify({'message':'Usuario creado', 'usuario':usuario.to_JSON()})
 
+# Ruta para eliminar un usuario
 @app.route('/api/usuarios/<id>',methods=['DELETE'])
 def delete_usuario(id):
     usuario = Usuario.query.get(id)
@@ -101,19 +109,23 @@ def delete_usuario(id):
     db.session.commit()
     return jsonify({'message':'Usuario eliminado'})
 
-# Modulo de tareas
+################# Modulo de tareas #################
+
+# Ruta para obtener todas las tareas
 @app.route('/api/tareas',methods=['GET'])
 def get_tareas():
     tareas = Tarea.query.all()
     tareas_json = [tarea.to_JSON() for tarea in tareas]
     return jsonify(tareas_json)
 
+# Ruta para obtener una tarea por id
 @app.route('/api/tareas/<id>',methods=['GET'])
 def get_tarea_by_id(id):
     tarea = Tarea.query.get(id)
     tarea_json = tarea.to_JSON()
     return jsonify(tarea_json)
 
+# Ruta para crear una tarea
 @app.route('/api/tareas', methods=['POST'])
 def create_tarea():
     data = request.get_json()
@@ -122,6 +134,7 @@ def create_tarea():
     db.session.commit()
     return jsonify({'message':'Tarea creada', 'tarea':tarea.to_JSON()})
 
+# Ruta para eliminar una tarea
 @app.route('/api/tareas/<id>',methods=['DELETE'])
 def delete_tarea(id):
     # Eliminar registros de la tabla intermedia (usuarios_tareas)
@@ -133,6 +146,7 @@ def delete_tarea(id):
     db.session.commit()
     return jsonify({'message':'Tarea eliminada'})
 
+# Ruta para actualizar una tarea
 @app.route('/api/tareas/<id>',methods=['PUT'])
 def update_tarea(id):
     data = request.get_json()
@@ -145,6 +159,7 @@ def update_tarea(id):
     db.session.commit()
     return jsonify({'message':'Tarea actualizada'})
 
+# Ruta para actualizar una tarea a estado "completada"
 @app.route('/api/tareas/<id>_ok',methods=['PUT'])
 def update_tarea_ok(id):
     tarea = Tarea.query.get(id)
@@ -152,19 +167,24 @@ def update_tarea_ok(id):
     db.session.commit()
     return jsonify({'message':'Tarea actualizada: completada'})
 
-# Modulo de proyectos
+
+################# Modulo de proyectos #################
+
+# Ruta para obtener todos los proyectos
 @app.route('/api/proyectos',methods=['GET'])
 def get_proyectos():
     proyectos = Proyecto.query.all()
     proyectos_json = [proyecto.to_JSON() for proyecto in proyectos]
     return jsonify(proyectos_json)
 
+# Ruta para obtener un proyecto por id
 @app.route('/api/proyectos/<id>',methods=['GET'])
 def get_proyecto_by_id(id):
     proyecto = Proyecto.query.get(id)
     proyecto_json = proyecto.to_JSON()
     return jsonify(proyecto_json)
 
+# Ruta para crear un proyecto
 @app.route('/api/proyectos', methods=['POST'])
 def create_proyecto():
     data = request.get_json()
@@ -173,6 +193,7 @@ def create_proyecto():
     db.session.commit()
     return jsonify({'message':'Proyecto creado', 'proyecto':proyecto.to_JSON()})
 
+# Ruta para eliminar un proyecto
 @app.route('/api/proyectos/<id>',methods=['DELETE'])
 def delete_proyecto(id):
     # Eliminar tareas de usuarios asociadas al proyecto
@@ -188,6 +209,7 @@ def delete_proyecto(id):
     db.session.commit()
     return jsonify({'message':'Proyecto eliminado'})
 
+# Ruta para actualizar un proyecto
 @app.route('/api/proyectos/<id>',methods=['PUT'])
 def update_proyecto(id):
     data = request.get_json()
@@ -197,19 +219,23 @@ def update_proyecto(id):
     db.session.commit()
     return jsonify({'message':'Proyecto actualizado'})
 
+# Ruta para obtener las tareas de un proyecto
 @app.route('/api/proyectos/<id>_tareas',methods=['GET'])
 def get_proyecto_tareas(id):
     tareas = Tarea.query.filter_by(proyecto_id=id).all()
     tareas_json = [tarea.to_JSON() for tarea in tareas]
     return jsonify(tareas_json)
 
-# Modulo de usuarios_tareas
+################# Modulo de usuarios_tareas #################
+
+# Ruta para obtener todas las asociaciones de usuarios_tareas
 @app.route('/api/usuarios_tareas',methods=['GET'])
 def get_usuarios_tareas():
     usuarios_tareas = UsuarioTarea.query.all()
     usuarios_tareas_json = [usuario_tarea.to_JSON() for usuario_tarea in usuarios_tareas]
     return jsonify(usuarios_tareas_json)
 
+# Ruta para obtener todas las tareas asociadas a un usuario
 @app.route('/api/usuarios_tareas/<usuario_id>',methods=['GET'])
 def get_usuarios_tareas_by_usuario_id(usuario_id):
     usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
@@ -220,6 +246,7 @@ def get_usuarios_tareas_by_usuario_id(usuario_id):
         body.append({'id':id,'tarea':tarea.to_JSON()})
     return jsonify(body)
 
+# Ruta para obtener todas las tareas asignadas a un usuario (sin completar)
 @app.route('/api/usuarios_tareas/<usuario_id>_asignadas',methods=['GET'])
 def get_usuarios_tareas_asignadas(usuario_id):
     usuarios_tareas = UsuarioTarea.query.filter_by(usuario_id=usuario_id).all()
@@ -231,6 +258,8 @@ def get_usuarios_tareas_asignadas(usuario_id):
             body.append({'id':id,'tarea':tarea.to_JSON()})
     return jsonify(body)
 
+
+# Ruta para crear una asociacion de usuario-tarea
 @app.route('/api/usuarios_tareas', methods=['POST'])
 def create_usuario_tarea():
     data = request.get_json()
@@ -241,6 +270,7 @@ def create_usuario_tarea():
     db.session.commit()
     return jsonify({'message':'Usuario-tarea creado', 'usuario_tarea':usuario_tarea.to_JSON()})
 
+# Ruta para eliminar una asociacion de usuario-tarea
 @app.route('/api/usuarios_tareas/<id>',methods=['DELETE'])
 def delete_usuario_tarea(id):
     usuario_tarea = UsuarioTarea.query.get(id)
@@ -250,5 +280,6 @@ def delete_usuario_tarea(id):
 
 
 
+################# Correr aplicacion #################
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
