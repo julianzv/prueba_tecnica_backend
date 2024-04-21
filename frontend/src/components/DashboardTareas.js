@@ -271,6 +271,7 @@ const DashboardTareas = () => {
                                     <option value="3">Completada</option>
                                 </select>
                             </div>
+                            <label htmlFor="proyecto_id">Proyecto</label>
                             <select
                                 className="form-control"
                                 id="proyecto_id"

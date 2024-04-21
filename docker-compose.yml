@@ -1,0 +1,49 @@
+services: 
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_HOST=db
+      - DB_NAME=gestion_tareas
+    volumes:
+      - ./backend:/app
+    stdin_open: true
+    tty: true
+    restart: on-failure
+ 
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gestion_tareas
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    restart: on-failure
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+    restart: on-failure
+    depends_on:
+      - backend
+    entrypoint: ["npm"]
+    command: ["start"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

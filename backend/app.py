@@ -16,6 +16,7 @@ import bcrypt
 from functions import login_check, blacklist_token
 from dotenv import load_dotenv
 load_dotenv('.env')
+import os
 
 # Estados para insertar en caso de no existir
 lista_estados = ["pendiente","en progreso","completada"]
@@ -25,13 +26,13 @@ app = Flask(__name__)
 CORS(app)
 
 # Base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/gestion_tareas'
-
+app.config['SQLALCHEMY_DATABASE_URI']= f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
 # Init db
 db.init_app(app)
 
 # Agregar datos iniciales
 with app.app_context():
+    db.create_all()
     # Crear estados si no existen
     for estado in lista_estados:
         if not Estado.query.filter_by(nombre=estado).first():
