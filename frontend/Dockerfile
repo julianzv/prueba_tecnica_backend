@@ -5,7 +5,7 @@ FROM node:16
 WORKDIR /app
 
 # Copiar los archivos de definición de paquetes y instalar dependencias
-COPY package.json ./
+COPY package.json package-lock.json ./
 RUN yarn install
 
 # Copiar el resto de los archivos del frontend
